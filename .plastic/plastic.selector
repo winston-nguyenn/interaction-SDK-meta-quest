@@ -1,0 +1,4 @@
+repository "interaction-SDK@truongng@cloud"
+  path "/"
+    br "/main"
+    co "/main"
