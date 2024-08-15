@@ -2168,8 +2168,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1943514927}
   - component: {fileID: 1943514926}
+  - component: {fileID: 1943514928}
   m_Layer: 0
-  m_Name: RightHandTracking
+  m_Name: HandTracking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2182,7 +2183,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943514925}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43736cf0edfb1a84c8eea24386708074, type: 3}
   m_Name: 
@@ -2203,6 +2204,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1943514928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943514925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d84e2cc8523d3948ab38af74456d046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 225131605}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
