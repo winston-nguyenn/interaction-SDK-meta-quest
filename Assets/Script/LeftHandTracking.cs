@@ -12,7 +12,7 @@ using Unity.Services.CloudSave;
 using Unity.Services.CloudSave.Models;
 using Unity.Services.Core;
 
- public class HandJointsLog : MonoBehaviour
+ public class LeftHandTracking : MonoBehaviour
  {
     [SerializeField]
     private Hand hand;
@@ -68,7 +68,7 @@ using Unity.Services.Core;
     {
         // File name format
         string endTimeStamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-        string fileName = $"HandJoints_{endTimeStamp}.csv";
+        string fileName = $"LeftHandJoints_{endTimeStamp}.csv";
 
         // Convert all hand tracking data to a string
         string csvData = string.Join("\n", poseDataList);

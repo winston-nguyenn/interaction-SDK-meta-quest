@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../hand-tracking-unity"
+		},
+		{
+			"path": "../../../Unity Essentials Project"
+		}
+	],
+	"settings": {
+		"dotnet.defaultSolution": "interaction-SDK.sln"
+	}
+}
