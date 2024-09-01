@@ -16,6 +16,8 @@ using Unity.Services.Core;
  {
     [SerializeField]
     private Hand hand;
+    [SerializeField]
+    private List<GameObject> cubes; // List of cube objects to track
     private Pose currentPose;
     private List<HandJointId> handJointIds;
     private List<string> poseDataList = new List<string>();
@@ -32,7 +34,7 @@ using Unity.Services.Core;
         handJointIds = new List<HandJointId>((HandJointId[])System.Enum.GetValues(typeof(HandJointId)));
 
         // Add header
-        poseDataList.Add("Timestamp (yyyyMMdd_HHmmss.ffff),Joint,PositionX,PositionY,PositionZ,RotationX,RotationY,RotationZ,RotationW");
+        poseDataList.Add("Timestamp (yyyyMMdd_HHmmss.ffff),Object,Joint,PositionX,PositionY,PositionZ,RotationX,RotationY,RotationZ,RotationW");
 
         // Initialize Start time
         startTime = DateTime.Now;
@@ -45,9 +47,11 @@ using Unity.Services.Core;
         {
             if (hand.GetJointPose(jointId, out currentPose))
             {
-                SavePoseToString(jointId, currentPose);
+                SavePoseToString("Right Hand", jointId, currentPose);
             }
         }
+        // Track cube positions
+        //TrackCubePositions();
         // Check if the interval has passed to save a csv file to Unity Cloud
         if (DateTime.Now - startTime >= uploadInterval)
         {
@@ -55,13 +59,21 @@ using Unity.Services.Core;
             SaveCSVToCloud();           // Save and upload CSV file
         }
     }
-
-    void SavePoseToString(HandJointId jointId, Pose pose)
+    // void TrackCubePositions()
+    // {
+    //     foreach (GameObject cube in cubes)
+    //     {
+    //         string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss.ffff");
+    //         Vector3 position = cube.transform.position;
+    //         Quaternion rotation = cube.transform.rotation;
+    //         SavePoseToString("Cube", cube.name, new Pose(position, rotation));
+    //     }
+    // }
+    void SavePoseToString(string objectLabel, HandJointId jointId, Pose pose)
     {
         string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss.ffff");
-        // Position in meters and Rotation in quaternions (To convert a quaternion to Euler angles, use the Quaternion.eulerAngles function)
-        string poseData = $"{timestamp},{jointId},{pose.position.x},{pose.position.y},{pose.position.z}," +
-                              $"{pose.rotation.x},{pose.rotation.y},{pose.rotation.z},{pose.rotation.w}"; 
+        string poseData = $"{timestamp},{objectLabel},{jointId},{pose.position.x},{pose.position.y},{pose.position.z}," +
+                          $"{pose.rotation.x},{pose.rotation.y},{pose.rotation.z},{pose.rotation.w}"; 
         poseDataList.Add(poseData);
     }
     private async void SaveCSVToCloud()

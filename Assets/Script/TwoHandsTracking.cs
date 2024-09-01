@@ -12,7 +12,7 @@ using Unity.Services.CloudSave;
 using Unity.Services.CloudSave.Models;
 using Unity.Services.Core;
 
- public class HandJointsLog : MonoBehaviour
+ public class TwoHandsTracking : MonoBehaviour
  {
     [SerializeField]
     private Hand leftHand;
