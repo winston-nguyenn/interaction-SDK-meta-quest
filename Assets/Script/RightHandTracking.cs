@@ -47,11 +47,11 @@ using Unity.Services.Core;
         {
             if (hand.GetJointPose(jointId, out currentPose))
             {
-                SavePoseToString("Right Hand", jointId, currentPose);
+                SaveJointPoseToString("Right Hand", jointId, currentPose);
             }
         }
         // Track cube positions
-        //TrackCubePositions();
+        TrackCubePositions();
         // Check if the interval has passed to save a csv file to Unity Cloud
         if (DateTime.Now - startTime >= uploadInterval)
         {
@@ -59,17 +59,24 @@ using Unity.Services.Core;
             SaveCSVToCloud();           // Save and upload CSV file
         }
     }
-    // void TrackCubePositions()
-    // {
-    //     foreach (GameObject cube in cubes)
-    //     {
-    //         string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss.ffff");
-    //         Vector3 position = cube.transform.position;
-    //         Quaternion rotation = cube.transform.rotation;
-    //         SavePoseToString("Cube", cube.name, new Pose(position, rotation));
-    //     }
-    // }
-    void SavePoseToString(string objectLabel, HandJointId jointId, Pose pose)
+    void TrackCubePositions()
+    {
+        foreach (GameObject cube in cubes)
+        {
+            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss.ffff");
+            Vector3 position = cube.transform.position;
+            Quaternion rotation = cube.transform.rotation;
+            SaveCubePoseToString("Cube", cube.name, new Pose(position, rotation));
+        }
+    }
+    void SaveCubePoseToString(string objectLabel, string cubeName, Pose pose)
+    {
+        string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss.ffff");
+        string poseData = $"{timestamp},{objectLabel},{cubeName},{pose.position.x},{pose.position.y},{pose.position.z}," +
+                          $"{pose.rotation.x},{pose.rotation.y},{pose.rotation.z},{pose.rotation.w}"; 
+        poseDataList.Add(poseData);
+    }
+    void SaveJointPoseToString(string objectLabel, HandJointId jointId, Pose pose)
     {
         string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss.ffff");
         string poseData = $"{timestamp},{objectLabel},{jointId},{pose.position.x},{pose.position.y},{pose.position.z}," +
