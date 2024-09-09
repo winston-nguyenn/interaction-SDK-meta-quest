@@ -8,10 +8,10 @@ This repository replicates the Block and Box neurological test for stroke patien
 </div>
 
 ## 1.1. Meta XR Interaction SDK (Software Development Kit)
-This VR application is developed using Unity and the Meta XR Interaction SDK, which facilitates immersive interactions within the virtual environment. The Interaction SDK allows users to grab and scale objects, push buttons, teleport, navigate user interfaces, and more, using either controllers or their physical hands.
+This VR application is developed using Unity and the [Meta XR Interaction SDK](https://developer.oculus.com/documentation/unity/unity-isdk-interaction-sdk-overview/), which facilitates immersive interactions within the virtual environment. The Interaction SDK allows users to grab and scale objects, push buttons, teleport, navigate user interfaces, and more, using either controllers or their physical hands.
 
 ## 1.2. Hand Tracking
-- The hand movements of patients are tracked through the positions and rotations of their joints in 3D space. This information is accessible via Meta’s API, which provides detailed bone data.
+- The hand movements of patients are tracked through the positions and rotations of their joints in 3D space. This information is accessible via [Meta’s API](https://developer.oculus.com/documentation/unity/unity-isdk-get-bone-position), which provides detailed bone data.
 - The hand tracking data is then sent to the Unity Cloud platform for further processing.
 
 
