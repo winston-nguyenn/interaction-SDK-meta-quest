@@ -1,6 +1,6 @@
 # Hand Tracking in Meta Quest 3
 
-This repository replicates the Block and Box neurological test for stroke patients to assess their rehabilitation progress by tracking hand movements. By replicating the test in the VR environment of Meta Quest 3, it is essential to accurately track the hand and body movements of the users.
+This VR project replicates the Block and Box neurological test for stroke patients to assess their rehabilitation progress by tracking hand movements. By replicating the test in the VR environment of Meta Quest 3, it is essential to accurately track the hand and body movements of the users.
 
 # 1. Core Concepts
 <div align=left>
@@ -17,7 +17,7 @@ This VR application is developed using Unity and the [Meta XR Interaction SDK](h
 
 # 2. Project structure
 <div align=left>
-  <img src="project structure.png" width="400">
+  <img src="project structure.png" width="600">
 </div>
 The left panel shows game objects with the main one is RightHandLog:
 
